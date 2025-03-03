@@ -30,11 +30,14 @@ MATCHSTR="The number of files are ${NUMFILES} and the number of matching lines a
 echo "Writing ${NUMFILES} files containing string ${WRITESTR} to ${WRITEDIR}"
 
 rm -rf "${WRITEDIR}"
+echo "Removed $WRITEDIR"
 
 # create $WRITEDIR if not assignment1
 assignment=`cat ../conf/assignment.txt`
 
-if [ $assignment != 'assignment1' ]
+echo "Assignment: $assignment"
+
+if [ $assignment = 'assignment1' ]
 then
 	mkdir -p "$WRITEDIR"
 
@@ -45,6 +48,7 @@ then
 	then
 		echo "$WRITEDIR created"
 	else
+		echo "Could not create $WRITEDIR"
 		exit 1
 	fi
 fi
